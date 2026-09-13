@@ -1,0 +1,11 @@
+vendor/
+.env
+.env.*
+!.env.example
+**/*.sqlite
+**/*.sqlite3
+database/*.sqlite
+database/*.sqlite3
+.idea/
+.vscode/
+.DS_Store
