@@ -1,0 +1,7 @@
+{
+    "id": ["required", "string", "length:4"],
+    "name": ["required", "string"],
+    "type": ["nullable", "string"],
+    "normal_balance": ["required", "enum", ["debit", "credit"]],
+    "is_postable": ["required", "boolean", "default:true"]
+}

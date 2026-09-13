@@ -31,5 +31,9 @@ return [
         '/admin/users/create' => ['App\\Modules\\Admin\\Controllers\\UserManagementController', 'create'],
         '/admin/users/edit' => ['App\\Modules\\Admin\\Controllers\\UserManagementController', 'edit'],
         '/admin/users/delete' => ['App\\Modules\\Admin\\Controllers\\UserManagementController', 'delete'],
+        '/accounting/chart-of-accounts' => ['App\\Modules\\Accounting\\Controllers\\ChartOfAccountController', 'index'],
+        '/accounting/chart-of-accounts/create' => ['App\\Modules\\Accounting\\Controllers\\ChartOfAccountController', 'create'],
+        '/accounting/chart-of-accounts/edit' => ['App\\Modules\\Accounting\\Controllers\\ChartOfAccountController', 'edit'],
+        '/accounting/chart-of-accounts/delete' => ['App\\Modules\\Accounting\\Controllers\\ChartOfAccountController', 'delete'],
     ],
 ];
