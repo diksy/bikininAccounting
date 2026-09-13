@@ -35,5 +35,9 @@ return [
         '/accounting/chart-of-accounts/create' => ['App\\Modules\\Accounting\\Controllers\\ChartOfAccountController', 'create'],
         '/accounting/chart-of-accounts/edit' => ['App\\Modules\\Accounting\\Controllers\\ChartOfAccountController', 'edit'],
         '/accounting/chart-of-accounts/delete' => ['App\\Modules\\Accounting\\Controllers\\ChartOfAccountController', 'delete'],
+        '/accounting/journal-entries' => ['App\\Modules\\Accounting\\Controllers\\JournalEntryController', 'index'],
+        '/accounting/journal-entries/create' => ['App\\Modules\\Accounting\\Controllers\\JournalEntryController', 'create'],
+        '/accounting/journal-entries/edit' => ['App\\Modules\\Accounting\\Controllers\\JournalEntryController', 'edit'],
+        '/accounting/journal-entries/delete' => ['App\\Modules\\Accounting\\Controllers\\JournalEntryController', 'delete'],
     ],
 ];

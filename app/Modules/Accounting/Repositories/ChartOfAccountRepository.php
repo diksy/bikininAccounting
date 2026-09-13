@@ -13,6 +13,7 @@ final class ChartOfAccountRepository
     public function __construct()
     {
         $this->ensureSchema();
+        $this->seedCommonAccounts();
     }
 
     public function all(): array
@@ -135,5 +136,39 @@ final class ChartOfAccountRepository
                 created_at TEXT NOT NULL
             )'
         );
+    }
+
+    public function seedCommonAccounts(): void
+    {
+        $pdo = Database::connection();
+        $seed = [
+            ['1010', 'Cash in Bank', 'Asset', 'debit', 1],
+            ['1020', 'Cash on Hand', 'Asset', 'debit', 1],
+            ['1100', 'Accounts Receivable', 'Asset', 'debit', 1],
+            ['1200', 'Inventory', 'Asset', 'debit', 1],
+            ['1500', 'Office Equipment', 'Asset', 'debit', 1],
+            ['2000', 'Accounts Payable', 'Liability', 'credit', 1],
+            ['2100', 'Taxes Payable', 'Liability', 'credit', 1],
+            ['3000', 'Owner Equity', 'Equity', 'credit', 1],
+            ['3100', 'Retained Earnings', 'Equity', 'credit', 1],
+            ['4000', 'Sales Revenue', 'Revenue', 'credit', 1],
+            ['5000', 'Cost of Goods Sold', 'Expense', 'debit', 1],
+            ['5100', 'Operating Expense', 'Expense', 'debit', 1],
+        ];
+
+        foreach ($seed as [$id, $name, $type, $normalBalance, $isPostable]) {
+            $statement = $pdo->prepare(
+                'INSERT OR IGNORE INTO chart_of_accounts (id, name, type, normal_balance, is_postable, created_at) VALUES (:id, :name, :type, :normal_balance, :is_postable, :created_at)'
+            );
+
+            $statement->execute([
+                'id' => strtoupper((string) $id),
+                'name' => $name,
+                'type' => $type,
+                'normal_balance' => strtolower((string) $normalBalance),
+                'is_postable' => (bool) $isPostable ? 1 : 0,
+                'created_at' => date('Y-m-d H:i:s'),
+            ]);
+        }
     }
 }

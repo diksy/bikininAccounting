@@ -1,7 +1,21 @@
 {
-    "id": ["required", "string", "length:4"],
-    "name": ["required", "string"],
-    "type": ["nullable", "string"],
-    "normal_balance": ["required", "enum", ["debit", "credit"]],
-    "is_postable": ["required", "boolean", "default:true"]
+    "journal_entries": {
+        "id": ["required", "unsignedBigInteger"],
+        "entry_no": ["required", "string", "unique"],
+        "date": ["required", "date"],
+        "description": ["required", "string"],
+        "debit": ["required", "unsignedInteger", "default:0"],
+        "credit": ["required", "unsignedInteger", "default:0"],
+        "status": ["required", "enum:draft,posted", "default:draft"],
+        "journal_lines": [
+            {
+                "id": ["required", "unsignedBigInteger"],
+                "journal_entry_id": ["required", "unsignedBigInteger", "foreign:journal_entries"],
+                "account_id": ["required", "string", "length:4", "foreign:chart_of_accounts"],
+                "note": ["required", "string"],
+                "debit": ["required", "unsignedInteger", "default:0"],
+                "credit": ["required", "unsignedInteger", "default:0"]
+            }
+        ]
+    }
 }
