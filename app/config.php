@@ -22,7 +22,14 @@ return [
         'password' => Env::get('DB_PASSWORD', ''),
     ],
     'routes' => [
-        '/' => ['App\\Modules\\Shared\\Controllers\\HomeController', 'index'],
+        '/' => ['App\\Modules\\Shared\\Controllers\\GuestHomeController', 'index'],
+        '/login' => ['App\\Modules\\Auth\\Controllers\\AuthController', 'login'],
+        '/register' => ['App\\Modules\\Auth\\Controllers\\AuthController', 'register'],
+        '/logout' => ['App\\Modules\\Auth\\Controllers\\AuthController', 'logout'],
         '/dashboard' => ['App\\Modules\\Accounting\\Controllers\\DashboardController', 'index'],
+        '/admin/users' => ['App\\Modules\\Admin\\Controllers\\UserManagementController', 'index'],
+        '/admin/users/create' => ['App\\Modules\\Admin\\Controllers\\UserManagementController', 'create'],
+        '/admin/users/edit' => ['App\\Modules\\Admin\\Controllers\\UserManagementController', 'edit'],
+        '/admin/users/delete' => ['App\\Modules\\Admin\\Controllers\\UserManagementController', 'delete'],
     ],
 ];
